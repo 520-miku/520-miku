@@ -24,3 +24,19 @@ nav li {
     padding: 0 10px;
     display: inline-block;
 }
+
+.div{
+    padding:150px 600px;
+}
+   .class1{
+    transform: rotate(360deg);
+    transition-duration: 5s;
+    
+   
+    }
+
+    
+    
+    
+  
+
