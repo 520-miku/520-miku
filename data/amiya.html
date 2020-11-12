@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        html, body {height: 100%;}
+        .bg {
+            background-image: url(../img/bg.png);
+            background-attachment: fixed;
+            background-size: 2100px 900px;
+        }
+
+        div {
+            width: 350px;
+            height: 350px;
+            margin: 60px auto;
+        }
+
+        img {
+            width: 350px;
+            border-radius: 100%;
+            animation-delay: 0s;
+            animation-duration: 3s;
+            animation-name: tu;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        audio {
+            width: 60%;
+            margin: 20px auto;
+            display: block;
+        }
+
+        @keyframes tu {
+            from {
+                transform: rotate(-360deg);
+            }
+        }
+    </style>
+</head>
+<body class="bg">
+<div>
+    <img id="amiya" src="../img/amiya.png" alt="amiya.png" onclick="controller()" />
+</div>
+<audio id="music" controls autoplay><!--autoplay自动播放-->
+    <source src="../music/ReoNa - Untitled world.mp3">
+</audio>
+
+<script>
+    let amiya = document.getElementById("amiya");
+    let music = document.getElementById("music");
+    let state = true;
+
+    music.onplay = ()=>{
+        amiya.style.animationPlayState = "running";
+        return  state = true;
+    }
+
+    music.onpause = ()=>{
+        amiya.style.animationPlayState = "paused";
+        return state = false;
+    }
+
+    function controller() {
+        if ( state ) {
+            amiya.style.animationPlayState = "paused";
+            music.pause();
+            return state = false;
+        } else {
+            amiya.style.animationPlayState = "running";
+            music.play();
+            return state = true;
+        }
+    }
+</script>
+
+</body>
+</html>
