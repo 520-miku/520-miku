@@ -49,19 +49,28 @@
 </audio>
 
 <script>
-    let state = true;
     let amiya = document.getElementById("amiya");
     let music = document.getElementById("music");
+    let state = true;
 
-    // console.log(amiya);
-    // console.log(music);
+    music.onplay = ()=>{
+        amiya.style.animationPlayState = "running";
+        return  state = true;
+    }
+
+    music.onpause = ()=>{
+        amiya.style.animationPlayState = "paused";
+        return state = false;
+    }
 
     function controller() {
         if ( state ) {
             amiya.style.animationPlayState = "paused";
+            music.pause();
             return state = false;
         } else {
             amiya.style.animationPlayState = "running";
+            music.play();
             return state = true;
         }
     }
